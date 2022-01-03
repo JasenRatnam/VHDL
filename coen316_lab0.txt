@@ -1,0 +1,233 @@
+COEN 316 Lab 0  
+
+Ted Obuchowicz
+Sept. 18, 2020
+
+
+Objective: To illustrate the steps of how to remotely login via a
+           Windows or Linux/Mac ssh session. 
+
+           To learn the rudiments of Linux ( create directory,
+           change into a directory, create a text file using the 
+           'nano' command line text editor).
+ 
+           To become acquainted with the Zoom videoconferencing
+           software.
+
+
+Step 1. Connect to an ENCS Linux server using Putty (from Windows),
+        or ssh from a Linux or a Mac system.
+
+Linux and MacOS:
+
+The ssh command is used to connect your home computer
+to a university Linux server (there are several :
+login.encs.concordia.ca ,  computation.encs.concordia.ca ,
+and a few other which may be restricted acces. The server
+called 'login' is meant for short duration sessions, the
+'computation' server is meant to be used for long sessions. 
+The following is the command to issue from your terminal prompt:
+
+ted@localhost ~]$    ssh -Y login.encs.concordia.ca -l joevlsi
+-----------------           ----------------------  ------
+1.                               2.                    3.
+
+Comments:
+
+1. This is my local  prompt, yours may appear 
+   different depending on how your account has
+   been setup by our system administrators. It
+   is NOT part of the command. In Linux, commands
+   are entered after the prompt (and then pressing the
+      Enter key).            
+
+
+2. the 'login.encs.concordia.ca' specifies the fully 
+    quantified domain name of the remote host you
+    wish to connect to.
+
+3. the '-l user_name'   is used to specify the login 
+   name on the remote server. Otherwise, the default
+   is the login name on your home computer (which may
+   be differrent from your ENCS university login  name).
+   In the example command, I am logging in as user 'joevlsi'
+   (instead of my usual 'ted' login, 'joevlsi' is a test account
+    setup for testing purposes).
+
+After pressing the Enter key, you will see be prompted
+to enter your ENCS password:
+
+The following is the typical interaction:
+
+[ted@localhost ~]$ ssh -Y login.encs.concordia.ca  -l joevlsi
+joevlsi@login.encs.concordia.ca's password: 
+Last login: Tue Jul 28 15:49:26 2020 from 209-169-182-35.mc.derytele.com
+==========================================================================
+Gina Cody School of Engineering and Computer Science, Concordia University
+
+             Unauthorized access is strictly forbidden.
+
+For assistance: e-mail: servicedesk@encs.concordia.ca
+For information:   web: https://www.concordia.ca/ginacody/
+
+==========================================================================
+   -------------------------------------------------------------------
+   Wed May 20 2020
+
+   We will soon be updating the ssh server software on our systems
+   in order to keep up with security fixes, and as a result the host
+   keys will change.
+
+   Your ssh client software may advise you that the system you're
+   connecting to isn't the same as the system you meant to connect to.
+   In that case, you'll need to accept the new key presented by our
+   system before the software will continue connecting.  You will
+   need to do this for each of the systems that you connect to, though
+   there is no deadline for doing it for any system.  It will simply
+   need to be done the next time you connect to a system after its
+   host key has changed.
+
+   If you encounter issues, or have any questions or concerns about
+   this upcoming change, please send an email to help@concordia.ca
+   and we will do our best to assist.
+   -------------------------------------------------------------------
+
+[grace] [/home/j/joevlsi] > 
+
+
+You are now logged into the ENCS Linux server and can issue commands
+and run programs  from the command line. 
+
+
+Windows:
+
+The Windows program Putty is a freely available (https://putty.org)
+SSH and Telnet client program. It lets one remotely connect to another
+computer, run applications on the remote computer, and have the results
+displayedon your local (home) Windows computer. To use Putty to establish
+a simple command line terminal session, download and install the Putty
+program then start Putty from Windows:
+
+In the Putty Configuration Window , specify an ENCS Linux
+server as the :
+Specify the destination you want to connect to
+
+  Host Name (or IP address)                 Port
+  
+  login.encs.concordia.ca                    22 (leave as
+                                                 default setting
+                                                  of 22)
+
+  Connection Type
+
+   Raw      Telnet       Rlogin   X SSH    Serial
+
+                                 (leave SSH as the default
+                                  preconfigured connection type)
+
+                                      Open  (select Open at
+                                             the bottom of the
+                                             window)
+
+
+After you select Open, a message stating:
+
+"The server's host key is not cached in the registry. You will
+have ... "
+
+Simply, select Yes to this standard Security alert message.
+A terminal window will appear and you will be prompted
+to enter your ENCS login name , followed by your password.
+You are now logged into the ENCS Linux computer with your
+ENCS username.
+
+
+
+Step 2. Creating a subdirectory to hold your COEN 316 related files.
+
+It is strongly recommended that you create a directory
+called COEN316 to hold all your COEN 316 related files,
+and a directory called Code within your COEN 316 directory
+to hold all your VHDL  programs. The following
+Linux commands are used to do this:
+
+[grace] [/home/j/joevlsi] > mkdir COEN316
+[grace] [/home/j/joevlsi] > cd COEN316
+[grace] [/home/j/joevlsi/COEN316] > mkdir Code
+[grace] [/home/j/joevlsi/COEN316] > cd Code
+[grace] [/home/j/joevlsi/COEN316/Code] >
+
+Step 3: Use a Linux text editor to create an ASCII text file with
+        filname and2.vhd containing:
+
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity and2_gate is
+port( in_1, in_2: in std_logic;
+      output    : out std_logic);
+end;
+
+architecture example of and2_gate is
+begin
+  output <= in_1 and in_2;
+end;
+
+
+The above lines are to be saved in an ASCII text file called
+and2.vhd . 
+
+Using a Linux text editor:
+
+The above assumed that the user is familiar with using
+a Linux text editor. For those unfamiliar with Linux
+and the available text editors, here is a very short
+guide to using the 'nano' Linux text editor.
+
+Any Linux text command line text editor can be used such
+as 'vi', 'emacs', 'nano', 'pico'. This example gives the
+basics of using the 'nano' text editor as it is easy and
+user-friendly:
+
+grace] [/home/j/joevlsi/COEN316/Code] > nano junk.txt
+
+After you press Enter, you will see on your terminal:
+ GNU nano 2.3.1              File: junk.txt                                   
+ 
+
+
+
+
+
+
+
+
+                                  [ New File ]
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
+^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
+
+
+
+The cursor will be postioned in the top left hand corner of the
+nano text editor. You can begin typing your code. One may use
+the up, down, left, right arrows to move around in the file and use
+the Backspace and Delete keys.
+
+To save the file, press the Ctrl and O keys simultaneosly.
+The name of the file (junk.txt) will be the default file
+name, you can specify another name if your wish and the
+contents of the file will be saved a file residing in the
+directory from where you invoked the nano text editor from.
+It is wise to save often, or else you may accidentally lose
+what you typed in.
+
+To exit from the text editor (after you have saved your file),
+press the  Ctrl and X  keys simulataneosly (this keystroke
+combination is shortened to 'Ctrl-X' ).
+
+
+
+Use the 'nano' text editor to create and save the and2.vhd file
+within your Code subdirectory.
+
